@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Quizz</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="handle.js"></script>
+
+</head>
+
+<body>
+    <div class="content">
+        <div class="score"></div>
+        <div class="correct">Correct</div>
+        <div class="endGame"></div>
+        <div class="main">
+            <div class="question" id="question">
+            </div>
+        </div>
+        <div class="ct">
+            Click on the correct answer
+        </div>
+        <div class="answer" id="answerr" name="answerr">
+            <input class="ans" type="submit" id="answer0" value="">
+            <input class="ans" type="submit" id="answer1" value="">
+            <input class="ans" type="submit" id="answer2" value="">
+            <input class="ans" type="submit" id="answer3" value="">
+        </div>
+        <button id="startGame" name="start" class="reset">Start Game</button>
+        <div class="timer">
+            <p id="countDown"></p>
+        </div>
+    </div>
+
+</body>
+
+</html>
