@@ -2,6 +2,7 @@ var interval;
 var time;
 var score;
 
+
 function setData(data, currentScore) {
     $("#question").text(data.question);
     $("#answer0").val(data.answer[0]);
@@ -20,6 +21,7 @@ function gameOver() {
     $(".endGame").text("GAME OVER!YOUR SCORE IS " + score);
     clearInterval(interval);
     $(".ans").prop('disabled', true);
+    $("#scoreBoard").css("visibility", "visible");
 }
 
 function startGame() {
@@ -27,13 +29,33 @@ function startGame() {
     $(".endGame").css("visibility", "hidden");
     $('#startGame').text("Reset Game");
     $(".ans").prop('disabled', false);
+    // $("#scoreBoard").prop('disabled', true);
+    $("#scoreBoard").css("visibility", "hidden");
+    $(".highScore").css("visibility", "hidden");
+    $(".answer").css("visibility", "visible");
+    $(".question").css("visibility", "visible");
+    $(".timer").css("visibility", "visible");
+    $(".ct").css("visibility", "visible");
 }
 
-$(document).ready(function () {
+function showRank() {
+    $(".highScore").css("visibility", "visible");
+    $(".answer").css("visibility", "hidden");
+    $(".question").css("visibility", "hidden");
+    $(".timer").css("visibility", "hidden");
+    $(".ct").css("visibility", "hidden");
+    $(".endGame").css("visibility", "hidden");
+}
 
-    $('#startGame').click(function () {
+$(document).ready(function() {
+    $("#scoreBoard").click(function() {
+        //call to server
+        showRank();
+    });
+
+    $('#startGame').click(function() {
         //sending get method to server to query question
-        $.get("questionRender.php", { questionRequest: "start" }, function (res) {
+        $.get("questionRender.php", { questionRequest: "start" }, function(res) {
             var quizz = JSON.parse(res);
             startGame();
             setData(quizz, 0);
@@ -41,19 +63,19 @@ $(document).ready(function () {
         timeCountDownStart();
     });
 
-    $("#answer0, #answer1, #answer2, #answer3").click(function () {
+    $("#answer0, #answer1, #answer2, #answer3").click(function() {
         var $this = $(this);
         var userAnswer = $this.val();
 
         //sending post method to server to ask about the result
         $.post("answerCheck.php", {
             ans: userAnswer
-        }, function (response) {
+        }, function(response) {
             var result = JSON.parse(response);
             if (result == true) {
                 score++;
                 //gen new question, update score
-                $.get("questionRender.php", { questionRequest: "start" }, function (res) {
+                $.get("questionRender.php", { questionRequest: "start" }, function(res) {
                     var quizz = JSON.parse(res);
                     startGame();
                     setData(quizz, score);
@@ -64,14 +86,16 @@ $(document).ready(function () {
             }
         })
     });
+
+
 });
 
 function timeCountDownStart() {
-    clearInterval(interval);//clear every time click reset 
-    const startingMinutes = 0.5;//set time here
+    clearInterval(interval); //clear every time click reset 
+    const startingMinutes = 0.5; //set time here
     let time = (startingMinutes * 60) - 1;
     //set 1s
-    interval = setInterval(function () {
+    interval = setInterval(function() {
         const minutes = Math.floor(time / 60);
         let seconds = time % 60;
 

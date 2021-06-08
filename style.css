@@ -1,8 +1,8 @@
-*{
+* {
     font-family: cursive;
-
 }
-.content{
+
+.content {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -16,7 +16,7 @@
     border-collapse: collapse;
 }
 
-.score{
+.score {
     position: absolute;
     top: 5%;
     right: 5%;
@@ -29,7 +29,8 @@
     text-align: center;
     box-shadow: 0px 5px 1px #9da853;
 }
-.correct{
+
+.correct {
     position: absolute;
     top: 5%;
     left: 42%;
@@ -44,7 +45,7 @@
     box-shadow: 0px 3px 2px #9da853;
 }
 
-.question{
+.question {
     position: absolute;
     top: 16%;
     left: 16%;
@@ -54,10 +55,11 @@
     background-color: #9da0ea;
     text-align: center;
     box-shadow: 0px 5px 1px #535aa8;
-    z-index:1;
+    z-index: 1;
     font-size: 15rem;
 }
-.ct{
+
+.ct {
     position: absolute;
     bottom: 31%;
     left: 16%;
@@ -66,10 +68,11 @@
     padding-top: 3%;
     background-color: #b481d9;
     text-align: center;
-    z-index:1;
+    z-index: 1;
     box-shadow: 0px 5px 1px #8153a8;
 }
-.answer{
+
+.answer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     width: 70%;
@@ -77,31 +80,18 @@
     left: 16%;
     height: 15%;
     grid-column-gap: 25px;
-    z-index:1;
+    z-index: 1;
     position: absolute;
 }
-.answer input{
+
+.answer input {
     cursor: pointer;
     border: none;
     box-shadow: 0px 5px 1px #7ea8bb;
     font-size: 5rem;
 }
 
-.timer{
-    position: absolute;
-    bottom: 1%;
-    right: 3%;
-    width: 33%;
-    height: 7%;
-    text-align: center;
-    font-size: 1.1rem;
-    padding-bottom: 2%;
-    background-color: #b0e64c;
-    box-shadow: 0px 3px 1px #7ea8bb;
-    font-size: 1.9rem;
-}
-
-.endGame{
+.endGame {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -117,11 +107,17 @@
     padding-top: 5%;
     visibility: hidden;
 }
-.ct, .correct, .score, .reset{
+
+.ct,
+.correct,
+.score,
+.reset,
+.scoreBoard {
     font-size: 2rem;
 }
 
-.reset{
+.reset,
+.scoreBoard {
     position: absolute;
     bottom: 1%;
     border: none;
@@ -134,4 +130,47 @@
     text-align: center;
     background-color: #cee9f5;
     box-shadow: 0px 3px 1px #7ea8bb;
+}
+
+.timer {
+    position: absolute;
+    bottom: 1%;
+    right: 3%;
+    width: 33%;
+    height: 7%;
+    text-align: center;
+    font-size: 1.1rem;
+    padding-bottom: 2%;
+    background-color: #b0e64c;
+    box-shadow: 0px 3px 1px #7ea8bb;
+    font-size: 1.9rem;
+}
+
+.scoreBoard {
+    left: 5%;
+    background-color: tomato;
+}
+
+#title {
+    display: block;
+    box-sizing: border-box;
+    clear: both;
+    width: 303%;
+}
+
+.highScore {
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    z-index: 3;
+    border: 1px solid tomato;
+    visibility: hidden;
+}
+
+.highScore th,
+.highScore td {
+    border: 1px solid tomato;
+    line-height: 5rem;
+    width: 17%;
+    text-align: center;
 }
