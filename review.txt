@@ -1,0 +1,3 @@
+Làm good => rất chuẩn chỉ khi dùng Ajax
+
+Em hãy phát triển thêm ứng dụng của mình bằng cách lưu vào mysql thay vì check trong session
