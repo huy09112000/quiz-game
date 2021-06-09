@@ -18,7 +18,7 @@ function gameOver() {
     $(".correct").css("visibility", "hidden");
     $(".endGame").css("visibility", "visible");
     $('#startGame').text("Start Game");
-    $(".endGame").text("GAME OVER!YOUR SCORE IS " + score);
+    $("#lastScore").text("GAME OVER!YOUR SCORE IS " + score + ", ENTER YOUR NAME:");
     clearInterval(interval);
     $(".ans").prop('disabled', true);
     $("#scoreBoard").css("visibility", "visible");
@@ -47,9 +47,24 @@ function showRank() {
     $(".endGame").css("visibility", "hidden");
 }
 
+function setScoreBoard(rankingList) {
+    //set text
+    var i;
+    for (i = 0; i < rankingList.length; i++) {
+        $("#top" + i + "Name").html(rankingList[i].userName);
+        $("#top" + i + "Score").html(rankingList[i].score);
+    }
+}
 $(document).ready(function() {
     $("#scoreBoard").click(function() {
         //call to server
+        $.get("highScoreRender.php", { getHighScore: "get" }, function(res) {
+            //list of high score
+            var rankingList = JSON.parse(res);
+            setScoreBoard(rankingList);
+            //load data
+        });
+
         showRank();
     });
 
