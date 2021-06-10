@@ -7,8 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Quizz</title>
+<<<<<<< HEAD
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+=======
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+>>>>>>> scoreboard-function
     <script src="handle.js"></script>
 
 </head>
@@ -17,7 +21,18 @@
     <div class="content">
         <div class="score"></div>
         <div class="correct">Correct</div>
+<<<<<<< HEAD
         <div class="endGame"></div>
+=======
+        <div class="endGame">
+            <div id="lastScore"></div>
+            <div class="submitScore">
+                <input type="text" name="" id="userName" placeholder="Enter your name to save">
+                <button id="submitHighScore">Save Game</button>
+            </div>
+
+        </div>
+>>>>>>> scoreboard-function
         <div class="main">
             <div class="question" id="question">
             </div>
@@ -31,6 +46,47 @@
             <input class="ans" type="submit" id="answer2" value="">
             <input class="ans" type="submit" id="answer3" value="">
         </div>
+<<<<<<< HEAD
+=======
+        <table class="highScore">
+            <tr>
+                <td id="title">HIGH SCORE</td>
+            </tr>
+            <tr>
+                <th>Rank</th>
+                <th>User Name</th>
+                <th>Score</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td id="top0Name"></td>
+                <td id="top0Score"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td id="top1Name"></td>
+                <td id="top1Score"></td>
+            </tr>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td id="top2Name"></td>
+                <td id="top2Score"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td id="top3Name"></td>
+                <td id="top3Score"></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td id="top4Name"></td>
+                <td id="top4Score"></td>
+            </tr>
+
+        </table>
+        <button id="scoreBoard" class="scoreBoard">High Score</button>
+>>>>>>> scoreboard-function
         <button id="startGame" name="start" class="reset">Start Game</button>
         <div class="timer">
             <p id="countDown"></p>
