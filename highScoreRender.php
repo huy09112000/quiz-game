@@ -1,8 +1,6 @@
 <?php
 include_once 'dbcontext.php';
 
-
-
 class userRecord
 {
     public $userName;

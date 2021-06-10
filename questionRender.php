@@ -75,5 +75,5 @@ if (isset($_GET['questionRequest'])) {
   //craete session to store correct answer
   $_SESSION["correctAns"] = $quizz->get_correctAns();
 
-  echo json_encode($quizz);
+  echo json_encode($quizz); 
 }

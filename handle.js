@@ -18,7 +18,7 @@ function gameOver() {
     $(".correct").css("visibility", "hidden");
     $(".endGame").css("visibility", "visible");
     $('#startGame').text("Start Game");
-    $("#lastScore").text("GAME OVER!YOUR SCORE IS " + score + ", ENTER YOUR NAME:");
+    $("#lastScore").text("GAME OVER!YOUR SCORE IS " + score);
     clearInterval(interval);
     $(".ans").prop('disabled', true);
     $("#scoreBoard").css("visibility", "visible");
@@ -102,7 +102,26 @@ $(document).ready(function() {
         })
     });
 
-
+    $('#submitHighScore').click(function() {
+        $name = $.trim($('#userName').val());
+        $.post("checkDupUser.php", { userName: $name }, function(res) {
+            var result = JSON.parse(res);
+            if (result == true) {
+                alert("The name: " + $name + " already exist in database, please choose another name!");
+            } else {
+                //post score and username
+                $.post("saveGame.php", { userName: $name, score: score }, function(res) {
+                    var result = JSON.parse(res);
+                    if (result == true) {
+                        alert("Save success!");
+                        $('#userName').val("");
+                    } else {
+                        alert("Save fail");
+                    }
+                });
+            }
+        })
+    })
 });
 
 function timeCountDownStart() {
