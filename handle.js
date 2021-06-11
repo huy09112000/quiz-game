@@ -114,6 +114,7 @@ $(document).ready(function() {
                     if (result == true) {
                         alert("Save success!");
                         $('#userName').val("");
+                        $("#scoreBoard").click();
                     } else {
                         alert("Save fail");
                     }

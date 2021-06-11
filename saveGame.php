@@ -8,7 +8,7 @@ if (isset($_POST['score'])) {
     $userName = $_POST['userName'];
     $score = $_POST['score'];
     $sql = "INSERT INTO `highscore`(`user_name`, `score`) VALUES ('{$userName}','{$score}')";
-
+    
     try {
         $conn->query($sql);
     } catch (Exception $e) {
