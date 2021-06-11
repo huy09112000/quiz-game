@@ -1,12 +1,13 @@
 <?php
 //control and handle request from user
+require_once 'dbContext.php';
 session_start();
 
 class quizz
 {
   public $question;
   public $answer = array();
-  public $correctAns;
+  public $questionId;
 
   function set_question($question)
   {
@@ -21,59 +22,26 @@ class quizz
   {
     $this->answer = $answer;
   }
-  function get_name()
+  function get_answer()
   {
     return $this->answer;
   }
 
-  function set_correctAns($correctAns)
+  function set_questionId($questionId)
   {
-    $this->correctAns = $correctAns;
+    $this->questionId = $questionId;
   }
-  function get_correctAns()
+  function get_questionId()
   {
-    return $this->correctAns;
+    return $this->questionId;
   }
 }
 
-function randomQuizz()
-{
-  $quiz = new quizz();
-  $firstNumber = random_int(0, 10);
-  $secondNumber = random_int(0, 10);
-  switch (random_int(1, 3)) {
-    case 1:
-      //+
-      $correctAnswer = $firstNumber + $secondNumber;
-      $question = $firstNumber . "+" . $secondNumber;
-      break;
-    case 2:
-      //-
-      $correctAnswer = $firstNumber - $secondNumber;
-      $question = $firstNumber . "-" . $secondNumber;
-      break;
-    case 3:
-      //*
-      $correctAnswer = $firstNumber * $secondNumber;
-      $question = $firstNumber . "x" . $secondNumber;
-      break;
-  }
-  //random like this to avoid duplicate answer
-  $answer = array($correctAnswer, $correctAnswer + 1, $correctAnswer - $firstNumber - $secondNumber, $correctAnswer + $firstNumber +$secondNumber) ;
-  shuffle($answer);
-
-  $quiz->set_question($question);
-  $quiz->set_answer($answer);
-  $quiz->set_correctAns($correctAnswer);
-
-  return $quiz;
-}
-
-//return new quizz in each call
 if (isset($_GET['questionRequest'])) {
-  $quizz = randomQuizz();
+  //user do while loop to avoid missing question id in database  
+  do {
+    $quizz = getQuestion(random_int(1, questionIdCount($GLOBALS['conn'])), $GLOBALS['conn']);
+  } while (is_null($quizz));
   //craete session to store correct answer
-  $_SESSION["correctAns"] = $quizz->get_correctAns();
-
   echo json_encode($quizz);
 }

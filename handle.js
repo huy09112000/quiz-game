@@ -1,6 +1,7 @@
 var interval;
 var time;
 var score;
+var currentQuestionId;
 
 function setData(data, currentScore) {
     $("#question").text(data.question);
@@ -9,6 +10,7 @@ function setData(data, currentScore) {
     $("#answer2").val(data.answer[2]);
     $("#answer3").val(data.answer[3]);
     score = currentScore;
+    currentQuestionId = data.questionId;
     $(".score").text("Score: " + score);
     correctAnswer = data.correctAns;
 }
@@ -83,7 +85,8 @@ $(document).ready(function() {
 
         //sending post method to server to ask about the result
         $.post("answerCheck.php", {
-            ans: userAnswer
+            ans: userAnswer,
+            questionId: currentQuestionId
         }, function(response) {
             var result = JSON.parse(response);
             if (result == true) {
