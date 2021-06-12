@@ -57,6 +57,25 @@ function setScoreBoard(rankingList) {
     }
 }
 $(document).ready(function() {
+
+    $('#userName').keyup(function(){
+        console.log("keyup handle");
+        $name = $.trim($('#userName').val());
+        //call to dbi check
+        $.post("checkDupUser.php", { userName: $name }, function(res) {
+            var result = JSON.parse(res);
+            if (result == true) {
+                $('.containName').text("This name is already exist");
+                $('.containName').css("color","red");
+                $('#submitHighScore').prop('disabled', true);
+            } else {
+                $('.containName').text("This name is a valid user name, you can submit");
+                $('.containName').css("color","green");
+                $('#submitHighScore').prop('disabled', false);
+             }
+        });
+    });
+
     $("#scoreBoard").click(function() {
         //call to server
         $.get("highScoreRender.php", { getHighScore: "get" }, function(res) {
@@ -125,6 +144,8 @@ $(document).ready(function() {
             }
         })
     })
+
+ 
 });
 
 function timeCountDownStart() {

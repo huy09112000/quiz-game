@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Quizz</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="handle.js"></script>
 
 </head>
@@ -19,10 +20,10 @@
         <div class="endGame">
             <div id="lastScore"></div>
             <div class="submitScore">
-                <input type="text" name="" id="userName" placeholder="Enter your name to save">
-                <button id="submitHighScore">Save Game</button>
+                <input type="text" id="userName" placeholder="Enter your name to save">
+                <button id="submitHighScore" disabled="true">Save Game</button>
             </div>
-
+            <div class="containName"></div>
         </div>
         <div class="main">
             <div class="question" id="question">
